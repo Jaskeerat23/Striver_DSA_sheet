@@ -11,9 +11,7 @@ class Solution{
             if(arr[i] > sec_max && arr[i] < max)
                 sec_max = arr[i];
         }
-        if(sec_max == Integer.MIN_VALUE)
-            return -1;
-        return sec_max;
+        return (sec_max == Integer.MIN_VALUE) ? -1 : sec_max;
     }
 }
 public class secondlargest{
