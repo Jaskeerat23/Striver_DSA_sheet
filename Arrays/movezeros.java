@@ -1,19 +1,21 @@
 package Arrays;
 import java.util.*;
-class Solution{
-    static public void moveZeros(int[] nums){
-        int i=0, j=0;
-        while(i<nums.length){
-            if(nums[i] == 0){
-                j = i+1;
-                while(j<nums.length && nums[j]==0) j++;
-                if(j!=nums.length){
-                    nums[i] = nums[j];
-                    nums[j]=0;
-                }
+class Solution {
+    static public void moveZeroes(int[] nums) {
+        int i=0, j=-1;
+        for(i = 0; i<nums.length; i++)
+            if(nums[i]==0){
+                j = i;
+                break;
             }
-            i++;
-        }
+        if(j==-1)
+            return;
+        for(i = j+1; i<nums.length; i++)
+            if(nums[i]!=0){
+                nums[j] = nums[i];
+                nums[i] = 0;
+                j++;
+            }
     }
 }
 
