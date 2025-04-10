@@ -3,8 +3,8 @@
 using namespace std;
 class Solution {
 public:
+    //BRUTE FORCE APPROACH
     static vector<int> rearrangeArray(vector<int>& nums) {
-        //BRUTE FORCE APPROACH
         vector<int> pos, neg, res;
         for(int i : nums)
             (i<0) ? neg.push_back(i) : pos.push_back(i);
@@ -14,6 +14,7 @@ public:
         }
         return res;
     }
+    //OPTIMAL APPROACH
     static vector<int> rearrangeArray2(vector<int>& nums) {
         vector<int> res(nums.size());
         int pos=0, neg=1;
