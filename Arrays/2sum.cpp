@@ -13,6 +13,7 @@ public:
             }
             indices.insert({nums[i], i});
         }
+        return {};
     }
 };
 int main(){

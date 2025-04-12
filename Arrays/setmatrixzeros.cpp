@@ -22,7 +22,7 @@ public:
             for(int i = 0; i<rows; i++)
                 matrix[i][it->first] = 0;
     }
-    //APPROACH 2 : BETTER : T.C. O(N X M) | S.C(N x M)
+    //APPROACH 2 : BETTER : T.C. O(N X M) | S.C. O(N x M)
     static void setZeroes_1(vector<vector<int>>& matrix) {
         int m = matrix.size(), n = matrix[0].size();
         vector<int> rows(m, 0), cols(n, 0);
@@ -36,6 +36,39 @@ public:
             for(int j = 0; j<n; j++)
                 if(rows[i] || cols[j])
                     matrix[i][j] = 0;
+    }
+    //OPTIMAL APPROACH : T.C. O(N X M) | S.C. O(1)
+    static void setZeroes_2(vector<vector<int>>& matrix){
+        int col0 = 1, m = matrix.size(), n = matrix[0].size();
+        for(int i = 0; i<matrix.size(); i++){
+            for(int j = 0; j<matrix[i].size(); j++){
+                if(j == 0 && matrix[i][j] == 0)
+                    col0 = 0;
+                else if(matrix[i][j] == 0){
+                    matrix[0][j] = 0;
+                    matrix[i][0] = 0;
+                }
+            }
+        }
+        for(vector<int> i : matrix){
+            for(int j : i){
+                cout << j << "\t";
+            }
+            cout << endl;
+        }
+        for(int i = m-1; i>0; i--){
+            cout << "i is " << i << endl;
+            for(int j = n-1; j>0; j--){
+                if(matrix[i][0]==0 || matrix[0][j]==0)
+                    matrix[i][j] = 0;
+            }
+        }
+        if(matrix[0][0] == 0)
+            for(int i = 0; i<n; i++)
+                matrix[0][i] = 0;
+        if(col0 == 0)
+            for(int i = 0; i<m; i++)
+                matrix[i][0] = 0;
     }
 };
 int main(){
@@ -61,7 +94,7 @@ int main(){
         }
         cout << endl;
     }
-    Solution :: setZeroes_1(matrix);
+    Solution :: setZeroes_2(matrix);
     cout << "Modified matrix is : " << endl;
     for(vector<int> i : matrix){
         for(int j : i){
