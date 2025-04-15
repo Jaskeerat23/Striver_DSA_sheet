@@ -38,9 +38,9 @@ public:
                     matrix[i][j] = 0;
     }
     //OPTIMAL APPROACH : T.C. O(N X M) | S.C. O(1)
-    static void setZeroes_2(vector<vector<int>>& matrix){
+    static void setZeroes_2(vector<vector<int>>& matrix) {
         int col0 = 1, m = matrix.size(), n = matrix[0].size();
-        for(int i = 0; i<matrix.size(); i++){
+        for(int i = 0; i<matrix.size(); i++)
             for(int j = 0; j<matrix[i].size(); j++){
                 if(j == 0 && matrix[i][j] == 0)
                     col0 = 0;
@@ -49,20 +49,10 @@ public:
                     matrix[i][0] = 0;
                 }
             }
-        }
-        for(vector<int> i : matrix){
-            for(int j : i){
-                cout << j << "\t";
-            }
-            cout << endl;
-        }
-        for(int i = m-1; i>0; i--){
-            cout << "i is " << i << endl;
-            for(int j = n-1; j>0; j--){
+        for(int i = m-1; i>0; i--)
+            for(int j = n-1; j>0; j--)
                 if(matrix[i][0]==0 || matrix[0][j]==0)
                     matrix[i][j] = 0;
-            }
-        }
         if(matrix[0][0] == 0)
             for(int i = 0; i<n; i++)
                 matrix[0][i] = 0;
