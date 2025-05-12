@@ -10,13 +10,12 @@ public:
             int mid = high - (high - low)/2;
             if(nums[mid] == target){
                 high = mid - 1;
-                lbound = (lbound > mid) ? mid : lbound;
+                lbound = mid;
             }
             else if(nums[mid] < target)
                 low = mid + 1;
             else if(nums[mid] > target){
                 high = mid - 1;
-                // if(lbound > nums.size() || nums[lbound] <= nums[mid])
                 lbound = mid;
             }
         }
