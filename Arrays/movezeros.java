@@ -28,7 +28,7 @@ public class movezeros {
         int[] arr = new int[range];
         for(int i=0; i<range; i++)
             arr[i] = sc.nextInt();
-        Solution.moveZeros(arr);
+        Solution.moveZeroes(arr);
         for(int i : arr) { System.out.print(i + "\t"); }
         System.out.println();
         sc.close();

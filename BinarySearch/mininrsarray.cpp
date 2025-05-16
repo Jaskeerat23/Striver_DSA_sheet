@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<bits/stdc++.h>
 using namespace std;
 class Solution {
 public:
@@ -24,6 +25,21 @@ public:
         }
         return nums[high];
     }
+    static int findMin2(vector<int>& nums){
+        int low = 0, high = nums.size() - 1, ans = INT_MAX;
+        while(low <= high){
+            int mid = high - (high - low)/2;
+            if(nums[low] <= nums[mid]){
+                ans = min(ans, nums[low]);
+                low = mid + 1;
+            }
+            else{
+                ans = min(ans, nums[mid]);
+                high = mid - 1;
+            }
+        }
+        return ans;
+    }
 };
 int main(){
     vector<int> arr;
@@ -36,6 +52,6 @@ int main(){
         arr.push_back(num);
     }
     cout << endl;
-    int ans = Solution :: findMin(arr);
+    int ans = Solution :: findMin2(arr);
     cout << "Ans is : " << ans << endl;
 }
