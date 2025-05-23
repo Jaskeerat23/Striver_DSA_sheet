@@ -4,10 +4,9 @@
 using namespace std;
 class Solution{
 public:
-    //HELPER FUNCTION to find if it is possible at this day
-    
-    
-    //APPROACH 1(BRUTE-FORCE) : Linear Search T.C. = (max - min) * O(n)
+
+
+//APPROACH 1(BRUTE-FORCE) : Linear Search T.C. = (max - min) * O(n)
     static int findMin(vector<int>& bloomday, int m, int k){
         int high = INT_MIN, low = INT_MAX, size = bloomday.size();
         if(size < m*k) return -1;
@@ -50,10 +49,11 @@ public:
                 high = mid - 1;
             }
             else
-                low = mid + 1;
+            low = mid + 1;
         }
         return ans;
     }
+    //HELPER FUNCTION to find if it is possible at this day
     static bool possible(vector<int>& bloomday, int m, int k, int day){
         int bouquets = 0, count = 0;
             for(int j = 0; j<bloomday.size(); j++){
