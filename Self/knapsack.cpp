@@ -18,15 +18,16 @@ public:
         }
         for(int i = 0; i<p_w.size(); i++){
             if(W < p_w[i][2]){   // If weight left is less than weight of the current obj then break
-                maxProfit+=p_w[i][1] * W;
+                maxProfit+=p_w[i][1]/p_w[i][2] * W;
                 break;
             }
             else{
                 maxProfit+=p_w[i][1];
                 W-=p_w[i][2];    //Subtract the weigth of current selected obj from max capacity
             }
-        return maxProfit;
+            cout << "Weight left " << W << endl;
         }
+        return maxProfit;
     }
 };
 int main(){
