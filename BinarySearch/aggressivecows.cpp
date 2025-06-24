@@ -27,6 +27,33 @@ public:
         }
         return 0;
     }
+    static int aggressiveCows2(std :: vector<int>& stalls, int k){
+        std :: sort(stalls.begin(), stalls.end());
+        int i = 1, ans = -1;
+        int low = 1, high = stalls[stalls.size() - 1] - stalls[0];
+        while(low <= high){
+            int mid = high - (high - low)/2;
+            if(check(stalls, k, mid)){
+                ans = mid;
+                low = mid + 1;
+            }
+            else
+                high = mid - 1;
+        }
+        return ans;
+    }
+    static bool check(std :: vector<int>& stalls, int& k, int& i){
+        int cows = k - 1;
+        int lastCow = stalls[0];
+        for(int j = 1; j<stalls.size() && cows!=0; j++){
+            if(stalls[j] - lastCow >= i){
+                std :: cout << "Condition got passed for j : " << j << std :: endl;
+                lastCow = stalls[j];
+                cows-=1;
+            }
+        }
+        return cows==0;
+    }
 };
 int main(){
     std :: vector<int> stalls;
@@ -39,6 +66,6 @@ int main(){
     }
     std :: cout << "Enter cows : ";
     std :: cin >> k;
-    int ans = Solution :: aggressiveCows(stalls, k);
+    int ans = Solution :: aggressiveCows2(stalls, k);
     std :: cout << "Ans is " << ans << std :: endl;
 }
