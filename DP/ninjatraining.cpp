@@ -65,7 +65,7 @@ public:
             dp = temp;
         }
 
-        return max(dp[0], max(dp[0], dp[0]));
+        return max(dp[0], max(dp[1], dp[2]));
     }
 
     int maximumPoints(vector<vector<int>>& mat) {
