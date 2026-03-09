@@ -49,12 +49,26 @@ public:
         return dp[0];
     }
     
+    //Constant Space
+    static int DPSO_adv(vector<vector<int>>& grid) {
+        int m = grid.size(), n = grid[0].size();
+        for(int i = n - 2; i > -1; i-=1) grid.back()[i] = grid.back()[i] + grid.back()[i + 1];
+        for(int i = m - 2; i > -1; i-=1) grid[i][n - 1] = grid[i][n - 1] + grid[i + 1][n - 1];
+
+        for(int i = m - 2; i > -1; i-=1) {
+            for(int j = n - 2; j > -1; j-=1) {
+                grid[i][j] = min(grid[i + 1][j], grid[i][j + 1]) + grid[i][j];
+            }
+        }
+        return grid[0][0];
+    }
+
     static int minPathSum(vector<vector<int>>& grid) {
 
         //These 2 lines are only for Memoization and Tabulation
         // int m = grid.size(), n = grid[0].size();
         // vector<vector<int>> dp(m, vector<int>(n, -1));
-        return DPSO(grid);
+        return DPSO_adv(grid);
     }
 };
 
