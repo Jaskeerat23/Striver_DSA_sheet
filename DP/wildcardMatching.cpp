@@ -42,10 +42,6 @@ public:
         vector<vector<int>> dp(l1 + 1, vector<int>(l2 + 1, 0));
         // int ans = DPM(l1 - 1, l2 - 1, s, p, dp);
         int ans = DPT(s, p, dp);
-        for(auto& it1: dp) {
-            for(int& it2: it1) cout << it2 << " ";
-            cout << endl;
-        }
         return ans;
     } 
 };
